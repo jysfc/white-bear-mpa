@@ -2,9 +2,9 @@ import React from "react";
 import LogoLanding from "../../img/logo-landing.png";
 import { Link } from "react-router-dom";
 
-export default function Landing() {
+export default function LandingPageSignUp() {
    return (
-      // <!-- Background -->
+      //<!-- Background -->
       <div className="background-image">
          <div className="container">
             <div className="row mb-8">
@@ -28,22 +28,73 @@ export default function Landing() {
                         </p>
 
                         {/* <!-- new member card button --> */}
-                        <div id="new-member-card">
-                           <Link
-                              to="/landing-page-sign-up"
-                              className="btn btn-success btn-lg card-text-landing mt-5"
-                              id="sign-up-button"
+
+                        <button
+                           className="btn btn-success btn-lg card-text-landing mt-5"
+                           id="sign-up-button"
+                        >
+                           Sign up
+                        </button>
+
+                        {/* <!-- create account card --> */}
+                        <div id="create-account-card ">
+                           {/* <!-- className="d-none" --> */}
+
+                           <p className="card-text-landing text-success mt-2 mb-5">
+                              Let's get you signed up!
+                           </p>
+                           <div className="form-group">
+                              <label
+                                 for="sign-up-email-input"
+                                 className="text-muted lead card-text-landing"
+                              >
+                                 Email address
+                              </label>
+                              <input
+                                 type="email"
+                                 className="form-control"
+                                 id="sign-up-email-input"
+                              />
+                              <p
+                                 className="text-danger"
+                                 id="sign-up-email-error"
+                              ></p>
+                           </div>
+                           <div className="form-group">
+                              <label
+                                 for="sign-up-password-input"
+                                 className="text-muted lead card-text-landing"
+                              >
+                                 Create a password
+                              </label>
+                              <p className="text-muted mt-n2">
+                                 Must be at least 9 characters.
+                              </p>
+                              <input
+                                 type="password"
+                                 className="form-control"
+                                 id="sign-up-password-input"
+                              />
+                              <p
+                                 className="text-danger"
+                                 id="sign-up-password-error"
+                              ></p>
+                           </div>
+
+                           <button
+                              className="float-right btn btn-success btn-lg card-text-landing"
+                              id="lets-go"
                            >
-                              Sign up
-                           </Link>
+                              Let's go!
+                           </button>
                         </div>
                      </div>
                   </div>
                </div>
 
                {/* <!-- return card --> */}
-               <div className="col-12 col-lg-5">
-                  <div className="card mt-8 mt-lg-0 ml-lg-8">
+               <div className="col-12 col-lg-5 ml-lg-8">
+                  <div className="card mt-8 mt-lg-0">
                      <div className="card-body text-dark">
                         <h2>Welcome back</h2>
                         <p className="card-text-landing mt-3 mb-5">
