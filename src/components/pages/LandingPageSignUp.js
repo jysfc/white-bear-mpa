@@ -32,6 +32,7 @@ export default function LandingPageSignUp() {
                         <button
                            className="btn btn-success btn-lg card-text-landing mt-5"
                            id="sign-up-button"
+                           style={{ width: "100%" }}
                         >
                            Sign up
                         </button>
@@ -84,6 +85,7 @@ export default function LandingPageSignUp() {
                            <button
                               className="float-right btn btn-success btn-lg card-text-landing"
                               id="lets-go"
+                              style={{ width: "100%" }}
                            >
                               Let's go!
                            </button>
