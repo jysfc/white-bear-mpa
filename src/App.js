@@ -12,7 +12,7 @@ import AllCards from "./components/pages/AllCards";
 import AllCardsEdit from "./components/pages/AllCardsEdit";
 import NotFound from "./components/pages/NotFound";
 
-function App() {
+export default function App() {
    return (
       <Router>
          <Switch>
@@ -34,5 +34,3 @@ function App() {
       </Router>
    );
 }
-
-export default App;
