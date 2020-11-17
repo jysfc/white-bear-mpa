@@ -8,7 +8,6 @@ export default function CreateAnswer() {
          <h3 className="text-center lead text-muted my-2">Add an answer</h3>
 
          {/* <!-- Card --> */}
-
          <div className="card">
             <div className="card-body bg-secondary lead">
                <textarea rows="6" id="answer-input" autoFocus={true}></textarea>

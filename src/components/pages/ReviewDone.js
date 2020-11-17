@@ -1,5 +1,6 @@
 import React from "react";
+import AppTemplate from "../ui/AppTemplate";
 
 export default function ReviewDone() {
-  return <h1>ReviewDone</h1>;
+   return <AppTemplate>ReviewDone</AppTemplate>;
 }

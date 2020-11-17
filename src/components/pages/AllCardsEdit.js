@@ -1,5 +1,6 @@
 import React from "react";
+import AppTemplate from "../ui/AppTemplate";
 
 export default function AllCardsEdit() {
-  return <h1>All Cards Edit</h1>;
+   return <AppTemplate>AllCardsEdit</AppTemplate>;
 }

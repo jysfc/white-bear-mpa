@@ -1,5 +1,6 @@
 import React from "react";
+import AppTemplate from "../ui/AppTemplate";
 
 export default function AllCards() {
-  return <h1>All Cards</h1>;
+   return <AppTemplate>AllCards</AppTemplate>;
 }

@@ -1,5 +1,6 @@
 import React from "react";
+import AppTemplate from "../ui/AppTemplate";
 
 export default function ReviewCue() {
-  return <h1>ReviewCue</h1>;
+   return <AppTemplate>ReviewCue</AppTemplate>;
 }
