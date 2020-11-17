@@ -1,14 +1,14 @@
 import React from "react";
 import "./style/master.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AllCards from "./components/pages/AllCards";
-import AllCardsEdit from "./components/pages/AllCardsEdit";
+import Landing from "./components/pages/Landing";
 import CreateAnswer from "./components/pages/CreateAnswer";
 import CreateImagery from "./components/pages/CreateImagery";
-import Landing from "./components/pages/Landing";
 import ReviewAnswer from "./components/pages/ReviewAnswer";
 import ReviewCue from "./components/pages/ReviewCue";
 import ReviewDone from "./components/pages/ReviewDone";
+import AllCards from "./components/pages/AllCards";
+import AllCardsEdit from "./components/pages/AllCardsEdit";
 import NotFound from "./components/pages/NotFound";
 
 function App() {
