@@ -1,6 +1,7 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icon/save.svg";
+import { Link } from "react-router-dom";
 
 export default function CreateImagery() {
    return (
@@ -40,12 +41,12 @@ export default function CreateImagery() {
          <div className="clearfix"></div>
 
          {/* <!-- buttons --> */}
-         <a href="/create-answer" className="btn btn-link" id="back-to-answer">
+         <Link to="/create-answer" className="btn btn-link" id="back-to-answer">
             Back to answer
-         </a>
+         </Link>
 
-         <a
-            href="/create-answer"
+         <Link
+            to="/create-answer"
             className="btn btn-primary btn-lg ml-4 float-right"
             id="save-card"
          >
@@ -56,7 +57,7 @@ export default function CreateImagery() {
                style={{ marginBottom: "3px", marginRight: "4px" }}
             />
             Save
-         </a>
+         </Link>
       </AppTemplate>
    );
 }
