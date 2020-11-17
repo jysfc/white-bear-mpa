@@ -1,39 +1,31 @@
 import React from "react";
 import thumbsUpIcon from "../../icon/thumbs-up.svg";
-import appBearLogo from "../../icon/logo-app.svg";
+import Header from "../ui/Header";
 
 export default function ReviewAnswer() {
    return (
       <div className="container">
          <div className="row">
             <div className="col-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-               <img src={appBearLogo} width="32px" alt="White Bear Logo" />
-               <h3 className="d-inline text-brand text-dark ml-1">
-                  {" "}
-                  White Bear
-               </h3>
-               <a href="/index.html" className="btn btn-link float-right">
-                  Log out
-               </a>
-               <div className="clearfix"></div>
-
+               {/* <!-- Header --> */}
+               <Header />
                {/* <!-- Button group --> */}
                <div
                   className="btn-group d-flex mt-1 mb-5"
                   role="navigation"
                   aria-label="navigation"
                >
-                  <a href="/create-answer.html" className="btn btn-secondary">
+                  <a href="/create-answer" className="btn btn-secondary">
                      Create new
                   </a>
                   <a
-                     href="/review-cue.html"
+                     href="/review-cue"
                      className="btn btn-secondary tab-separator tab-active"
                   >
                      Review
                   </a>
                   <a
-                     href="/all-cards.html"
+                     href="/all-cards"
                      className="btn btn-secondary tab-separator"
                   >
                      All cards

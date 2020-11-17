@@ -1,5 +1,5 @@
 import React from "react";
-import appBearLogo from "../../icon/logo-app.svg";
+import Header from "../ui/Header";
 import saveIcon from "../../icon/save.svg";
 
 export default function CreateImagery() {
@@ -7,14 +7,8 @@ export default function CreateImagery() {
       <div className="container">
          <div className="row">
             <div className="col-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-               <img src={appBearLogo} width="32px" alt="White Bear Logo" />
-               <h3 className="d-inline text-brand text-dark ml-1">
-                  White Bear
-               </h3>
-               <a href="/index.html" className="btn btn-link float-right">
-                  Log out
-               </a>
-               <div className="clearfix"></div>
+               {/* <!-- Header --> */}
+               <Header />
 
                {/* <!-- Navigation --> */}
                <div
