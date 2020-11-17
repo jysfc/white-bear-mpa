@@ -1,15 +1,9 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
 
 export default function CreateAnswer() {
    return (
       <AppTemplate>
-         {/* <!-- Header --> */}
-         <Header />
-         {/* <!-- Navigation --> */}
-         <Navigation />
          {/* <!-- Comment above Card --> */}
          <h3 className="text-center lead text-muted my-2">Add an answer</h3>
 

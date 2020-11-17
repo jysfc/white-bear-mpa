@@ -1,18 +1,10 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
-import Header from "../ui/Header";
-import Navigation from "../ui/Navigation";
 import saveIcon from "../../icon/save.svg";
 
 export default function CreateImagery() {
    return (
       <AppTemplate>
-         {/* <!-- Header --> */}
-         <Header />
-
-         {/* <!-- Navigation --> */}
-         <Navigation />
-
          {/* <!-- Comment above card --> */}
          <h3 className="text-center lead text-muted my-2">
             Add memorable imagery
