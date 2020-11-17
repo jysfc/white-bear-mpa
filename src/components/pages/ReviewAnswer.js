@@ -1,6 +1,7 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import thumbsUpIcon from "../../icon/thumbs-up.svg";
+import { Link } from "react-router-dom";
 
 export default function ReviewAnswer() {
    return (
@@ -29,10 +30,10 @@ export default function ReviewAnswer() {
             Edit
          </a>
          <div className="float-right">
-            <a href="/review-done.html" className="btn btn-outline-primary">
+            <Link to="/review-done" className="btn btn-outline-primary">
                Needs work
-            </a>
-            <a href="/review-done.html" className="btn btn-primary ml-4">
+            </Link>
+            <Link to="/review-done" className="btn btn-primary ml-4">
                <img
                   src={thumbsUpIcon}
                   width="20px"
@@ -40,7 +41,7 @@ export default function ReviewAnswer() {
                   style={{ marginBottom: "5px", marginRight: "8px" }}
                />
                Got it
-            </a>
+            </Link>
          </div>
       </AppTemplate>
    );
