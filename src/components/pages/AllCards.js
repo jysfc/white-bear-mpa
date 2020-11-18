@@ -2,6 +2,7 @@ import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import EditIcon from "../../icon/edit.svg";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
 
 export default function AllCards() {
    return (

@@ -1,4 +1,4 @@
-const memoryCardSchema = {
+export const memoryCardSchema = {
    id: String, //hex#
    imagery: String, //top part of card
    answer: String, //bottom part of card

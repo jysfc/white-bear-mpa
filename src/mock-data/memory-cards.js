@@ -1,4 +1,4 @@
-const memoryCards = [
+export const memoryCards = [
    {
       id: "90f9cf94-195c-4169-a25e-03b9c1d496b6",
       imagery:

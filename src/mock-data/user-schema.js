@@ -1,4 +1,4 @@
-const userSchema = {
+export const userSchema = {
    id: String,
    email: String,
    password: String,
