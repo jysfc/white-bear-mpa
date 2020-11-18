@@ -1,6 +1,9 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
+
+const memoryCard = memoryCards[3];
 
 export default function ReviewCue() {
    return (
@@ -9,10 +12,7 @@ export default function ReviewCue() {
          {/* <!-- Card --> */}
          <div className="card">
             <div className="card-body bg-primary lead mb-5">
-               A wonderful serenity has taken possession of my entire soul, like
-               these sweet mornings of spring which I enjoy with my whole heart.
-               I am alone, and feel the charm of existence in this spot, which
-               was.
+               {memoryCard.imagery}
             </div>
          </div>
 

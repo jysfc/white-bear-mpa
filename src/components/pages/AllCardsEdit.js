@@ -3,7 +3,9 @@ import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icon/save.svg";
 import { Link } from "react-router-dom";
 import memoryCards from "../../mock-data/memory-cards";
-const memoryCard = memoryCards[0];
+import toDisplayDate from "date-fns/format";
+
+const memoryCard = memoryCards[1];
 
 export default function AllCardsEdit() {
    return (
@@ -76,21 +78,21 @@ export default function AllCardsEdit() {
                <p className="text-muted">Created on:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>{memoryCard.createdAt}</p>
+               <p>{toDisplayDate(memoryCard.createdAt, "MMM. d, y")}</p>
             </div>
 
             <div className="col-5 col-sm-3">
                <p className="text-muted">Last attempt:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>{memoryCard.lastAttemptAt}</p>
+               <p>{toDisplayDate(memoryCard.lastAttemptAt, "MMM. d, y")}</p>
             </div>
 
             <div className="col-5 col-sm-3">
                <p className="text-muted">Next attempt:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>{memoryCard.nextAttemptAt}</p>
+               <p>{toDisplayDate(memoryCard.nextAttemptAt, "MMM. d, y")}</p>
             </div>
 
             <div className="col-5 col-sm-3">
