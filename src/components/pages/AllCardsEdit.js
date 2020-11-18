@@ -2,6 +2,8 @@ import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import saveIcon from "../../icon/save.svg";
 import { Link } from "react-router-dom";
+import memoryCards from "../../mock-data/memory-cards";
+const memoryCard = memoryCards[0];
 
 export default function AllCardsEdit() {
    return (
@@ -12,13 +14,23 @@ export default function AllCardsEdit() {
          {/* <!-- Card --> */}
          <div className="card">
             <div className="card-body bg-primary lead">
-               <textarea rows="6" id="top-edit-input" autofocus></textarea>
+               <textarea
+                  rows="6"
+                  id="top-edit-input"
+                  autofocus
+                  defaultValue={memoryCard.imagery}
+               ></textarea>
             </div>
          </div>
 
          <div className="card">
             <div className="card-body bg-secondary lead">
-               <textarea rows="6" id="bottom-edit-input" autofocus></textarea>
+               <textarea
+                  rows="6"
+                  id="bottom-edit-input"
+                  autofocus
+                  defaultValue={memoryCard.answer}
+               ></textarea>
             </div>
          </div>
 
@@ -64,28 +76,28 @@ export default function AllCardsEdit() {
                <p className="text-muted">Created on:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>Dec. 24, 2019</p>
+               <p>{memoryCard.createdAt}</p>
             </div>
 
             <div className="col-5 col-sm-3">
                <p className="text-muted">Last attempt:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>Dec. 31, 2019</p>
+               <p>{memoryCard.lastAttemptAt}</p>
             </div>
 
             <div className="col-5 col-sm-3">
                <p className="text-muted">Next attempt:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>Jul. 14, 2020</p>
+               <p>{memoryCard.nextAttemptAt}</p>
             </div>
 
             <div className="col-5 col-sm-3">
                <p className="text-muted">Consecutive:</p>
             </div>
             <div className="col-7 col-sm-9">
-               <p>4</p>
+               <p>{memoryCard.totalSuccessfulAttempts}</p>
             </div>
 
             {/* <!-- Delete Button --> */}
