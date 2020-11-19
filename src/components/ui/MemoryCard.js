@@ -1,6 +1,6 @@
 import React from "react";
-import EditIcon from "../../icon/edit.svg";
 import { Link } from "react-router-dom";
+import EditIcon from "../../icon/edit.svg";
 
 export default function MemoryCard(props) {
    return (
