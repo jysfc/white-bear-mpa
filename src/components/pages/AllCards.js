@@ -21,7 +21,6 @@ export default function AllCards() {
                </button>
             </div>
          </div>
-
          {/* <!-- sort cards --> */}
          <div className="row my-4 no gutters">
             <div className="col-4">

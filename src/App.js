@@ -2,7 +2,6 @@ import React from "react";
 import "./style/master.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
-import LandingPageSignUp from "./components/pages/LandingPageSignUp";
 import CreateAnswer from "./components/pages/CreateAnswer";
 import CreateImagery from "./components/pages/CreateImagery";
 import ReviewAnswer from "./components/pages/ReviewAnswer";
@@ -17,11 +16,6 @@ export default function App() {
       <Router>
          <Switch>
             <Route exact path="/" component={Landing} />
-            <Route
-               exact
-               path="/landing-page-sign-up"
-               component={LandingPageSignUp}
-            />
             <Route exact path="/create-answer" component={CreateAnswer} />
             <Route exact path="/create-imagery" component={CreateImagery} />
             <Route exact path="/review-answer" component={ReviewAnswer} />
