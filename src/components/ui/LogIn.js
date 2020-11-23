@@ -14,7 +14,7 @@ export default function LogIn() {
 
                <div className="form-group">
                   <label
-                     for="email-input"
+                     for="login-email-input"
                      className="text-muted lead card-text-landing"
                   >
                      Email address
@@ -22,12 +22,12 @@ export default function LogIn() {
                   <input
                      type="email"
                      className="form-control"
-                     id="email-input"
+                     id="login-email-input"
                   />
                </div>
                <div className="form-group">
                   <label
-                     for="password-input"
+                     for="login-password-input"
                      className="text-muted lead card-text-landing"
                   >
                      Password
@@ -35,7 +35,7 @@ export default function LogIn() {
                   <input
                      type="email"
                      className="form-control"
-                     id="password-input"
+                     id="login-password-input"
                   />
                </div>
                <Link

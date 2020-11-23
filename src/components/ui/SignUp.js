@@ -20,7 +20,7 @@ export default class SignUp extends React.Component {
    }
 
    validateAndCreateUser() {
-      const emailInput = document.getElementById("email-input").value;
+      const emailInput = document.getElementById("signup-email-input").value;
       console.log(emailInput);
       const lowerCaseEmailInput = emailInput.toLowerCase();
       console.log(lowerCaseEmailInput);
@@ -76,7 +76,7 @@ export default class SignUp extends React.Component {
                            </p>
                            <div className="form-group">
                               <label
-                                 for="email-input"
+                                 for="signup-email-input"
                                  className="text-muted lead card-text-landing"
                               >
                                  Email address
@@ -88,7 +88,7 @@ export default class SignUp extends React.Component {
                                     "mb-2": true,
                                     "is-invalid": this.state.hasEmailError,
                                  })}
-                                 id="email-input"
+                                 id="signup-email-input"
                               />
                               {this.state.hasEmailError && (
                                  <p
@@ -101,7 +101,7 @@ export default class SignUp extends React.Component {
                            </div>
                            <div className="form-group">
                               <label
-                                 for="password-input"
+                                 for="signup-password-input"
                                  className="text-muted lead card-text-landing"
                               >
                                  Create a password
@@ -112,7 +112,7 @@ export default class SignUp extends React.Component {
                               <input
                                  type="password"
                                  className="form-control"
-                                 id="password-input"
+                                 id="signup-password-input"
                               />
                               <p
                                  className="text-danger"
