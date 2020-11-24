@@ -110,7 +110,7 @@ export default function AllCardsEdit() {
                      className="custom-control-input"
                      id="show-delete"
                   />
-                  <label className="custom-control-label" for="show-delete">
+                  <label className="custom-control-label" htmlFor="show-delete">
                      Show delete button
                   </label>
                </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
-import uuid from "uuid";
+import { v4 as getUuid } from "uuid";
 
 export default class SignUp extends React.Component {
    constructor(props) {
@@ -91,7 +91,13 @@ export default class SignUp extends React.Component {
          this.state.hasEmailError === false &&
          this.state.hasPasswordError === false
       ) {
-         console.log("VALID!");
+         const user = {
+            id: getUuid(),
+            email: emailInput,
+            password: hash(passwordInput),
+            createdAt: Date.now(),
+         };
+         console.log(user);
       }
    }
 
