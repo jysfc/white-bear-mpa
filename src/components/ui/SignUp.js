@@ -1,5 +1,7 @@
 import React from "react";
 import classnames from "classnames";
+import hash from "object-hash";
+import uuid from "uuid";
 
 export default class SignUp extends React.Component {
    constructor(props) {
