@@ -22,7 +22,7 @@ export default class SignUp extends React.Component {
       });
    }
 
-   setEmailState(emailInput) {
+   async setEmailState(emailInput) {
       const lowerCaseEmailInput = emailInput.toLowerCase();
       // eslint-disable-next-line
       const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -32,7 +32,7 @@ export default class SignUp extends React.Component {
             hasEmailError: true,
          });
       else if (!emailRegex.test(lowerCaseEmailInput) === false) {
-         console.log("VALID EMAIL");
+         console.log(emailInput);
          this.setState({
             emailError: "Please enter a valid email address.",
             hasEmailError: true,
@@ -49,7 +49,7 @@ export default class SignUp extends React.Component {
       else return passwordInput.includes(localPart);
    }
 
-   setPasswordState(passwordInput, emailInput) {
+   async setPasswordState(passwordInput, emailInput) {
       console.log(passwordInput);
 
       const uniqChars = [...new Set(passwordInput)];
@@ -81,12 +81,12 @@ export default class SignUp extends React.Component {
       }
    }
 
-   validateAndCreateUser() {
+   async validateAndCreateUser() {
       const emailInput = document.getElementById("signup-email-input").value;
       const passwordInput = document.getElementById("signup-password-input")
          .value;
-      this.setEmailState(emailInput);
-      this.setPasswordState(passwordInput, emailInput);
+      await this.setEmailState(emailInput);
+      await this.setPasswordState(passwordInput, emailInput);
       if (
          this.state.hasEmailError === false &&
          this.state.hasPasswordError === false
