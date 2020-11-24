@@ -3,15 +3,12 @@ import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
-import memoryCards from "../../mock-data/memory-cards";
-
-const memoryCard = memoryCards[3];
 
 export default class CreateAnswer extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         createAnswerText: memoryCard.answer,
+         createAnswerText: "",
       };
    }
 
@@ -55,12 +52,12 @@ export default class CreateAnswer extends React.Component {
                <span
                   className={classnames({
                      "text-danger": checkIsOver(
-                        this.state.CreateAnswerText,
+                        this.state.createAnswerText,
                         MAX_CARD_CHARS
                      ),
                   })}
                >
-                  {this.state.CreateAnswerText.length}/{MAX_CARD_CHARS}
+                  {this.state.createAnswerText.length}/{MAX_CARD_CHARS}
                </span>
             </p>
             <div className="clearfix"></div>
@@ -68,7 +65,10 @@ export default class CreateAnswer extends React.Component {
             {/* <!-- buttons --> */}
             <Link
                to="/create-imagery"
-               className="btn btn-outline-primary btn-lg ml-4 float-right disabled"
+               className={classnames(
+                  "btn btn-outline-primary btn-lg ml-4 float-right",
+                  { disabled: this.checkHasInvalidCharCount() }
+               )}
                id="next"
             >
                Next{" "}
