@@ -10,6 +10,7 @@ export default class SignUp extends React.Component {
          emailError: "",
          passwordError: "",
          hasEmailError: false,
+         hasPasswordError: false,
       };
    }
 
@@ -19,11 +20,8 @@ export default class SignUp extends React.Component {
       });
    }
 
-   validateAndCreateUser() {
-      const emailInput = document.getElementById("signup-email-input").value;
-      console.log(emailInput);
+   setEmailState(emailInput) {
       const lowerCaseEmailInput = emailInput.toLowerCase();
-      console.log(lowerCaseEmailInput);
       // eslint-disable-next-line
       const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailInput === "")
@@ -31,7 +29,7 @@ export default class SignUp extends React.Component {
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (!emailRegex.test(lowerCaseEmailInput)) {
+      else if (!emailRegex.test(lowerCaseEmailInput) === false) {
          console.log("VALID EMAIL");
          this.setState({
             emailError: "Please enter a valid email address.",
@@ -40,6 +38,53 @@ export default class SignUp extends React.Component {
       } else {
          this.setState({ emailError: "", hasEmailError: false });
       }
+   }
+
+   checkHasLocalPart(passwordInput, emailInput) {
+      const localPart = emailInput.split("@")[0];
+      if (localPart === "") return false;
+      else if (localPart.length < 4) return false;
+      else return passwordInput.includes(localPart);
+   }
+
+   setPasswordState(passwordInput, emailInput) {
+      console.log(passwordInput);
+
+      const uniqChars = [...new Set(passwordInput)];
+
+      if (passwordInput === "") {
+         this.setState({
+            passwordError: "Please create a password.",
+            hasPasswordError: true,
+         });
+      } else if (passwordInput.length < 9) {
+         this.setState({
+            passwordError: "Your password must be at least 9 characters.",
+            hasPasswordError: true,
+         });
+      } else if (this.checkHasLocalPart(passwordInput, emailInput)) {
+         this.setState({
+            passwordError:
+               "For your safety, your password cannot contain your email address.",
+            hasPasswordError: true,
+         });
+      } else if (uniqChars.length < 3) {
+         this.setState({
+            passwordError:
+               "For your safety, your password must contain at least 3 unique characters.",
+            hasPasswordError: true,
+         });
+      } else {
+         this.setState({ emailError: "", hasEmailError: false });
+      }
+   }
+
+   validateAndCreateUser() {
+      const emailInput = document.getElementById("signup-email-input").value;
+      const passwordInput = document.getElementById("signup-password-input")
+         .value;
+      this.setEmailState(emailInput);
+      this.setPasswordState(passwordInput, emailInput);
    }
 
    render() {
@@ -76,7 +121,7 @@ export default class SignUp extends React.Component {
                            </p>
                            <div className="form-group">
                               <label
-                                 for="signup-email-input"
+                                 htmlFor="signup-email-input"
                                  className="text-muted lead card-text-landing"
                               >
                                  Email address
@@ -95,13 +140,13 @@ export default class SignUp extends React.Component {
                                     className="text-danger"
                                     id="sign-up-email-error"
                                  >
-                                    {this.state.hasEmailError}
+                                    {this.state.emailError}
                                  </p>
                               )}
                            </div>
                            <div className="form-group">
                               <label
-                                 for="signup-password-input"
+                                 htmlFor="signup-password-input"
                                  className="text-muted lead card-text-landing"
                               >
                                  Create a password
@@ -111,20 +156,29 @@ export default class SignUp extends React.Component {
                               </p>
                               <input
                                  type="password"
-                                 className="form-control"
+                                 className={classnames({
+                                    "form-control": true,
+                                    "mb-2": true,
+                                    "is-invalid": this.state.hasPasswordError,
+                                 })}
                                  id="signup-password-input"
                               />
-                              <p
-                                 className="text-danger"
-                                 id="sign-up-password-error"
-                              ></p>
+
+                              {this.state.hasPasswordError && (
+                                 <p
+                                    className="text-danger"
+                                    id="sign-up-password-error"
+                                 >
+                                    {this.state.passwordError}
+                                 </p>
+                              )}
                            </div>
 
                            <button
                               //   to="/create-answer"
                               className="btn btn-success btn-block card-text-landing"
                               id="lets-go"
-                              onCLick={() => {
+                              onClick={() => {
                                  this.validateAndCreateUser();
                               }}
                            >
