@@ -85,6 +85,12 @@ export default class SignUp extends React.Component {
          .value;
       this.setEmailState(emailInput);
       this.setPasswordState(passwordInput, emailInput);
+      if (
+         this.state.hasEmailError === false &&
+         this.state.hasPasswordError === false
+      ) {
+         console.log("VALID!");
+      }
    }
 
    render() {
