@@ -77,3 +77,8 @@ textarea {
 .bg-danger {
    color: $white;
 }
+
+.disabled {
+   pointer-events: fill !important;
+   cursor: not-allowed;
+}

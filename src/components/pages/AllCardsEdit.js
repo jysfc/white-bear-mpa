@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import memoryCards from "../../mock-data/memory-cards";
 import toDisplayDate from "date-fns/format";
 import classnames from "classnames";
-import { checkIsOver } from "../../utils/helpers";
+import { checkIsOver, MAX_CARD_CHARS } from "../../utils/helpers";
 
 const memoryCard = memoryCards[3];
 
@@ -16,7 +16,19 @@ export default class AllCardsEdit extends React.Component {
       this.state = {
          answerText: memoryCard.answer,
          imageryText: memoryCard.imagery,
+         isDeleteChecked: false,
       };
+   }
+
+   checkHasInvalidCharCount() {
+      if (
+         this.state.answerText.length > MAX_CARD_CHARS ||
+         this.state.answerText.length === 0 ||
+         this.state.imageryText.length > MAX_CARD_CHARS ||
+         this.state.imageryText.length === 0
+      ) {
+         return true;
+      } else return false;
    }
 
    setImageryText(e) {
@@ -25,6 +37,14 @@ export default class AllCardsEdit extends React.Component {
 
    setAnswerText(e) {
       this.setState({ answerText: e.target.value });
+   }
+
+   toggleDeleteButton() {
+      this.setState({ isDeleteChecked: !this.state.isDeleteChecked });
+   }
+
+   deleteCard() {
+      this.setState({});
    }
 
    render() {
@@ -65,11 +85,13 @@ export default class AllCardsEdit extends React.Component {
             >
                <span
                   className={classnames({
-                     "text-danger": checkIsOver(this.state.answerText, 240),
+                     "text-danger": checkIsOver(
+                        this.state.answerText,
+                        MAX_CARD_CHARS
+                     ),
                   })}
                >
-                  Bottom: {this.state.answerText.length}
-                  /240
+                  Bottom: {this.state.answerText.length}/{MAX_CARD_CHARS}
                </span>
             </p>
 
@@ -79,11 +101,13 @@ export default class AllCardsEdit extends React.Component {
             >
                <span
                   className={classnames({
-                     "text-danger": checkIsOver(this.state.imageryText, 240),
+                     "text-danger": checkIsOver(
+                        this.state.imageryText,
+                        MAX_CARD_CHARS
+                     ),
                   })}
                >
-                  Top: {this.state.imageryText.length}
-                  /240
+                  Top: {this.state.imageryText.length}/{MAX_CARD_CHARS}
                </span>
             </p>
             <div className="clearfix"></div>
@@ -98,7 +122,10 @@ export default class AllCardsEdit extends React.Component {
             </Link>
             <Link
                to="all-cards"
-               className="btn btn-primary btn-lg ml-4 float-right disabled"
+               className={classnames(
+                  "btn btn-primary btn-lg ml-4 float-right",
+                  { disabled: this.checkHasInvalidCharCount() }
+               )}
                id="edit-save"
             >
                <img
@@ -143,13 +170,17 @@ export default class AllCardsEdit extends React.Component {
                   <p>{memoryCard.totalSuccessfulAttempts}</p>
                </div>
 
-               {/* <!-- Delete Button --> */}
+               {/* <!-- Delete checkbox --> */}
                <div className="col-12 mt-3">
                   <div className="custom-control custom-checkbox">
                      <input
                         type="checkbox"
                         className="custom-control-input"
                         id="show-delete"
+                        checked={this.state.isDeleteChecked}
+                        onChange={() => {
+                           this.toggleDeleteButton();
+                        }}
                      />
                      <label
                         className="custom-control-label"
@@ -160,13 +191,18 @@ export default class AllCardsEdit extends React.Component {
                   </div>
                </div>
             </div>
+            {/* <!-- Delete button --> */}
             <div className="mt-4">
-               <button
-                  className="btn btn-outline-danger d-none"
-                  id="delete-button"
-               >
-                  Delete this card
-               </button>
+               {this.state.isDeleteChecked && (
+                  <button
+                     className="btn btn-outline-danger"
+                     onClick={() => {
+                        this.deleteCard();
+                     }}
+                  >
+                     Delete this card
+                  </button>
+               )}
             </div>
          </AppTemplate>
       );
