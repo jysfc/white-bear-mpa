@@ -8,7 +8,7 @@ export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         order: "['createdAt'], ['desc']",
+         order: '["createdAt"], ["desc"]',
          memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
 
@@ -26,6 +26,16 @@ OLDEST
 orderBy(createdAt, asc)
 
 */
+   }
+
+   setMemoryCardsOrder(e) {
+      console.log("You've made a change");
+      const newOrder = e.target.value;
+      console.log(newOrder);
+      const copyOfMemoryCards = [...this.state.memoryCards];
+      const toJson = JSON.parse(newOrder);
+      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
    }
 
    render() {
@@ -52,15 +62,19 @@ orderBy(createdAt, asc)
                   <p className="text-muted mt-1">Sort card by</p>
                </div>
                <div className="col-8">
-                  <select className="form-control form-control-sm">
-                     <option value="['createdAt'], ['desc']">
+                  <select
+                     value={this.state.order}
+                     className="form-control form-control-sm"
+                     onChange={(e) => this.setMemoryCardsOrder(e)}
+                  >
+                     <option value='[["createdAt"], ["desc"]]'>
                         Most recent
                      </option>
-                     <option value="['createdAt'], ['asc']">Oldest</option>
-                     <option value="['totalSuccessfulAttempts', 'createdAt'], ['asc', 'asc']">
+                     <option value='[["createdAt"], ["asc"]]'>Oldest</option>
+                     <option value='[["totalSuccessfulAttempts", "createdAt"], ["asc", "asc"]]'>
                         Hardest
                      </option>
-                     <option value="['totalSuccessfulAttempts', 'createdAt'], ['desc', 'desc']">
+                     <option value='[["totalSuccessfulAttempts", "createdAt"], ["desc", "desc"]]'>
                         Easiest
                      </option>
                   </select>
