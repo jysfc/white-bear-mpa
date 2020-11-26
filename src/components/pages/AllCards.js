@@ -8,28 +8,23 @@ export default class AllCards extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         order: '["createdAt"], ["desc"]',
+         order: '[["createdAt"], ["desc"]]',
          memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
-
-      /*
-EASY
-orderBy([totalSuccessfulAttempts, createdAt], [desc, desc])
-
-HARD
-orderBy([totalSuccessfulAttempts, createdAt], [asc, asc])
-
-MOST RECENT
-orderBy(createdAt, desc)
-
-OLDEST
-orderBy(createdAt, asc)
-
-*/
    }
 
+   filterByInput(e) {}
+
+   setOrder(e) {
+      const newOrder = e.target.value;
+      console.log(newOrder); // '[["totalSuccessfulAttempts", "createdAt"], ["desc", "desc"]]'
+      this.setState({ order: newOrder });
+      this.setMemoryCards;
+   }
+
+   setMemoryCards() {}
+
    setMemoryCardsOrder(e) {
-      console.log("You've made a change");
       const newOrder = e.target.value;
       console.log(newOrder);
       const copyOfMemoryCards = [...this.state.memoryCards];
