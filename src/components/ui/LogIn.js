@@ -2,8 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { withRouter } from "react-router-dom";
 
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
    constructor(props) {
       super(props);
 
@@ -16,7 +17,7 @@ export default class LogIn extends React.Component {
    }
 
    async setEmailState(loginEmailInput) {
-      const lowerCaseloginEmailInput = loginEmailInput.toLowerCase();
+      const lowerCaseLoginEmailInput = loginEmailInput.toLowerCase();
       // eslint-disable-next-line
       const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (loginEmailInput === "")
@@ -24,7 +25,7 @@ export default class LogIn extends React.Component {
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (!emailRegex.test(lowerCaseloginEmailInput) === false) {
+      else if (emailRegex.test(lowerCaseLoginEmailInput) === false) {
          console.log(loginEmailInput);
          this.setState({
             emailError: "Please enter a valid email address.",
@@ -44,7 +45,7 @@ export default class LogIn extends React.Component {
             hasPasswordError: true,
          });
       } else {
-         this.setState({ emailError: "", hasEmailError: false });
+         this.setState({ passwordError: "", hasPasswordError: false });
       }
    }
 
@@ -130,7 +131,7 @@ export default class LogIn extends React.Component {
                      <button
                         //   to="/create-answer"
                         id="login-button"
-                        className="btn btn-success btn-block card-text-landing"
+                        className="btn btn-success float-right card-text-landing"
                         onClick={() => {
                            this.validateAndLogInUser();
                         }}
@@ -144,3 +145,4 @@ export default class LogIn extends React.Component {
       );
    }
 }
+export default withRouter(LogIn);

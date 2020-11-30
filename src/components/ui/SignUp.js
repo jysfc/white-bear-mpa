@@ -2,8 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { withRouter } from "react-router-dom";
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
@@ -30,7 +31,7 @@ export default class SignUp extends React.Component {
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (!emailRegex.test(lowerCaseEmailInput) === false) {
+      else if (emailRegex.test(lowerCaseEmailInput) === false) {
          console.log(emailInput);
          this.setState({
             emailError: "Please enter a valid email address.",
@@ -97,6 +98,8 @@ export default class SignUp extends React.Component {
             createdAt: Date.now(),
          };
          console.log(user);
+         // redirect the user
+         this.props.history.push("/create-answer");
       }
    }
 
@@ -206,3 +209,4 @@ export default class SignUp extends React.Component {
       );
    }
 }
+export default withRouter(SignUp);
