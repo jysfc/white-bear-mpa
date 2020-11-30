@@ -9,11 +9,30 @@ export default class AllCards extends React.Component {
       super(props);
       this.state = {
          order: '[["createdAt"], ["desc"]]',
-         memoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+         displayedMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
+         allMemoryCards: orderBy(memoryCards, ["createdAt"], ["desc"]),
       };
    }
 
-   filterByInput(e) {}
+   filterByInput() {
+      const input = document.getElementById("search-input").value;
+      const lowerCasedInput = input.toLowerCase();
+      console.log(lowerCasedInput);
+      const copyOfAllMemoryCards = [...this.state.allMemoryCards];
+      const filteredMemoryCards = copyOfAllMemoryCards.filter((memoryCard) => {
+         const lowerCasedImagery = memoryCard.imagery.toLowerCase();
+         const lowerCasedAnswer = memoryCard.answer.toLowerCase();
+         if (
+            lowerCasedImagery.includes(lowerCasedInput) ||
+            lowerCasedAnswer.includes(lowerCasedInput)
+         ) {
+            return true;
+         } else return false;
+      });
+      this.setState({ displayedMemoryCards: filteredMemoryCards }, () => {
+         this.setMemoryCards();
+      });
+   }
 
    setOrder(e) {
       const newOrder = e.target.value;
@@ -24,19 +43,13 @@ export default class AllCards extends React.Component {
    }
 
    setMemoryCards() {
-      const copyOfMemoryCards = [...this.state.memoryCards];
+      console.log("setting memory cards");
+      const copyOfDisplayedMemoryCards = [...this.state.displayedMemoryCards];
       const toJson = JSON.parse(this.state.order);
-      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
-      this.setState({ memoryCards: orderedMemoryCards });
-   }
-
-   setMemoryCardsOrder(e) {
-      const newOrder = e.target.value;
-      console.log(newOrder);
-      const copyOfMemoryCards = [...this.state.memoryCards];
-      const toJson = JSON.parse(newOrder);
-      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
-      this.setState({ order: newOrder, memoryCards: orderedMemoryCards });
+      console.log(...toJson);
+      const orderedMemoryCards = orderBy(copyOfDisplayedMemoryCards, ...toJson);
+      console.log(orderedMemoryCards);
+      this.setState({ displayedMemoryCards: orderedMemoryCards });
    }
 
    render() {
@@ -49,10 +62,14 @@ export default class AllCards extends React.Component {
                      className="form-control form-control-sm"
                      type="text"
                      placeholder="Search for a word"
+                     id="search-input"
                   />
                </div>
                <div className="col-4">
-                  <button className="btn btn-primary btn-block btn-sm">
+                  <button
+                     className="btn btn-primary btn-block btn-sm"
+                     onClick={() => this.filterByInput()}
+                  >
                      Search
                   </button>
                </div>
@@ -82,7 +99,7 @@ export default class AllCards extends React.Component {
                </div>
             </div>
             {/* <!-- cards --> */}
-            {this.state.memoryCards.map((memoryCard) => {
+            {this.state.displayedMemoryCards.map((memoryCard) => {
                return (
                   <MemoryCard
                      answer={memoryCard.answer}
