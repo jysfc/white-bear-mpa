@@ -18,11 +18,17 @@ export default class AllCards extends React.Component {
    setOrder(e) {
       const newOrder = e.target.value;
       console.log(newOrder); // '[["totalSuccessfulAttempts", "createdAt"], ["desc", "desc"]]'
-      this.setState({ order: newOrder });
-      this.setMemoryCards;
+      this.setState({ order: newOrder }, () => {
+         this.setMemoryCards();
+      });
    }
 
-   setMemoryCards() {}
+   setMemoryCards() {
+      const copyOfMemoryCards = [...this.state.memoryCards];
+      const toJson = JSON.parse(this.state.order);
+      const orderedMemoryCards = orderBy(copyOfMemoryCards, ...toJson);
+      this.setState({ memoryCards: orderedMemoryCards });
+   }
 
    setMemoryCardsOrder(e) {
       const newOrder = e.target.value;
@@ -60,7 +66,7 @@ export default class AllCards extends React.Component {
                   <select
                      value={this.state.order}
                      className="form-control form-control-sm"
-                     onChange={(e) => this.setMemoryCardsOrder(e)}
+                     onChange={(e) => this.setOrder(e)}
                   >
                      <option value='[["createdAt"], ["desc"]]'>
                         Most recent
