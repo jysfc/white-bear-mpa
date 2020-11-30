@@ -120,7 +120,7 @@ class SignUp extends React.Component {
                         onClick={() => {
                            this.showInputs();
                         }}
-                        id="sign-up-button"
+                        id="signup-button"
                         style={{ width: "100%" }}
                      >
                         Sign up
@@ -153,7 +153,7 @@ class SignUp extends React.Component {
                               {this.state.hasEmailError && (
                                  <p
                                     className="text-danger"
-                                    id="sign-up-email-error"
+                                    id="signup-email-error"
                                  >
                                     {this.state.emailError}
                                  </p>
@@ -182,7 +182,7 @@ class SignUp extends React.Component {
                               {this.state.hasPasswordError && (
                                  <p
                                     className="text-danger"
-                                    id="sign-up-password-error"
+                                    id="signup-password-error"
                                  >
                                     {this.state.passwordError}
                                  </p>
