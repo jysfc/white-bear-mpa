@@ -23,14 +23,14 @@ export default function ReviewAnswer() {
             </div>
          </div>
 
-         <a href="all-cards-edit.html" className="btn btn-link">
+         <Link to="/all-cards-edit" className="btn btn-link">
             Edit
-         </a>
+         </Link>
          <div className="float-right">
             <Link to="/review-done" className="btn btn-outline-primary">
                Needs work
             </Link>
-            <Link to="/review-done" className="btn btn-primary ml-4">
+            <Link to="/review-cue" className="btn btn-primary ml-4">
                <img
                   src={thumbsUpIcon}
                   width="20px"

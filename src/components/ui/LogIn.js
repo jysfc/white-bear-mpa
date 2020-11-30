@@ -128,7 +128,6 @@ class LogIn extends React.Component {
                         )}
                      </div>
                      <button
-                        //   to="/create-answer"
                         id="login-button"
                         className="btn btn-success float-right card-text-landing"
                         onClick={() => {

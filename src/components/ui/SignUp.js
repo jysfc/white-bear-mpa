@@ -190,7 +190,6 @@ class SignUp extends React.Component {
                            </div>
 
                            <button
-                              //   to="/create-answer"
                               className="btn btn-success btn-block card-text-landing"
                               id="lets-go"
                               onClick={() => {

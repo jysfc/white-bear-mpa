@@ -17,9 +17,9 @@ export default function ReviewCue() {
          </div>
 
          {/* <!-- buttons --> */}
-         <button className="btn btn-link" id="back-to-answer">
+         <Link to="/review-answer" className="btn btn-link" id="back-to-answer">
             Previous card
-         </button>
+         </Link>
          <Link
             to="/review-answer"
             className="btn btn-outline-primary float-right"
