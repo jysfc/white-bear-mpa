@@ -3,6 +3,7 @@ import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import { withRouter } from "react-router-dom";
+import { EMAIL_REGEX } from "../../utils/helpers";
 
 class SignUp extends React.Component {
    constructor(props) {
@@ -24,14 +25,12 @@ class SignUp extends React.Component {
 
    async setEmailState(emailInput) {
       const lowerCaseEmailInput = emailInput.toLowerCase();
-      // eslint-disable-next-line
-      const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailInput === "")
          this.setState({
             emailError: "Please enter your email address.",
             hasEmailError: true,
          });
-      else if (emailRegex.test(lowerCaseEmailInput) === false) {
+      else if (EMAIL_REGEX.test(lowerCaseEmailInput) === false) {
          console.log(emailInput);
          this.setState({
             emailError: "Please enter a valid email address.",
