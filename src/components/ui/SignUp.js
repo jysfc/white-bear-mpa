@@ -76,7 +76,7 @@ class SignUp extends React.Component {
             hasPasswordError: true,
          });
       } else {
-         this.setState({ emailError: "", hasEmailError: false });
+         this.setState({ passwordError: "", hasPasswordError: false });
       }
    }
 
