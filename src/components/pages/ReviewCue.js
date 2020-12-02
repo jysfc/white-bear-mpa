@@ -10,7 +10,9 @@ class ReviewCue extends React.Component {
    constructor(props) {
       super(props);
       axios
-         .get("https://run.mocky.io/v3/c88813b7-43f7-4dfb-8a80-fccec1f99bee")
+         .get(
+            "https://raw.githubusercontent.com/jysfc/white-bear-mpa/main/src/mock-data/memory-cards.json"
+         )
          .then(function (response) {
             // handle success
             console.log(response);
