@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./store/reducers";
+import combineReducers from "./store/reducers";
 
 const initialState = {
    user: {},
@@ -8,6 +8,6 @@ const initialState = {
    indexOfCurrentCard: 0,
 };
 
-const store = createStore(rootReducer, initialState, composeWithDevTools());
+const store = createStore(combineReducers, initialState, composeWithDevTools());
 
 export default store;
