@@ -1,10 +1,9 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import { Link } from "react-router-dom";
-import memoryCards from "../../mock-data/memory-cards";
 import axios from "axios";
-
-const memoryCard = memoryCards[3];
+import { connect } from "react-redux";
+import actions from "../../store/actions";
 
 class ReviewCue extends React.Component {
    constructor(props) {
@@ -13,9 +12,13 @@ class ReviewCue extends React.Component {
          .get(
             "https://raw.githubusercontent.com/jysfc/white-bear-mpa/main/src/mock-data/memory-cards.json"
          )
-         .then(function (response) {
+         .then(function (res) {
             // handle success
-            console.log(response);
+            console.log(res);
+            props.dispatch({
+               type: actions.STORE_QUEUED_CARDS,
+               payload: res.data,
+            });
          })
          .catch(function (error) {
             // handle error
@@ -24,13 +27,14 @@ class ReviewCue extends React.Component {
    }
 
    render() {
+      const memoryCard = this.props.queuedCards[this.props.indexOfCurrentCard];
       return (
          <AppTemplate>
             <div className="mb-5"></div>
             {/* <!-- Card --> */}
             <div className="card">
                <div className="card-body bg-primary lead mb-5">
-                  {memoryCard.imagery}
+                  {memoryCard && memoryCard.imagery}
                </div>
             </div>
 
@@ -52,4 +56,12 @@ class ReviewCue extends React.Component {
       );
    }
 }
-export default ReviewCue;
+
+function mapStateToProps(state) {
+   return {
+      queuedCards: state.queuedCards,
+      indexOfCurrentCard: state.indexOfCurrentCard,
+   };
+}
+
+export default connect(mapStateToProps)(ReviewCue);
