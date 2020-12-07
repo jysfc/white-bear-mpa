@@ -62,7 +62,7 @@ class ReviewAnswer extends React.Component {
 }
 function mapStateToProps(state) {
    return {
-      queuedCards: state.queuedCards,
+      queuedCards: state.queue,
       indexOfCurrentCard: state.indexOfCurrentCard,
    };
 }
