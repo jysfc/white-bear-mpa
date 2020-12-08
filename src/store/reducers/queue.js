@@ -1,13 +1,14 @@
 import actions from "../actions";
 
-export default function queued(queue = [], action) {
+export default function queue(queue = {}, action) {
+   let newQueue = { ...queue };
    switch (action.type) {
       case actions.STORE_QUEUED_CARDS:
-         queue.cards = action.payload;
-         return queue;
+         newQueue.cards = action.payload;
+         return newQueue;
       case actions.UPDATE_INDEX_OF_CURRENT_CARD:
-         queue.index = queue.index + 1;
-         return queue;
+         newQueue.index += 1;
+         return newQueue;
       default:
          return queue;
    }
