@@ -7,8 +7,13 @@ import actions from "../../store/actions";
 
 class ReviewAnswer extends React.Component {
    goToNextCard() {
-      this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
-      this.props.history.push("/review-cue");
+      if (this.props.queue.index === this.props.queue.cards.length - 1) {
+         this.props.dispatch({ type: actions.RESET_QUEUE });
+         this.props.history.push("/review-done");
+      } else {
+         this.props.dispatch({ type: actions.UPDATE_INDEX_OF_CURRENT_CARD });
+         this.props.history.push("/review-cue");
+      }
    }
 
    render() {

@@ -8,22 +8,24 @@ import actions from "../../store/actions";
 class ReviewCue extends React.Component {
    constructor(props) {
       super(props);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/jysfc/white-bear-mpa/main/src/mock-data/memory-cards.json"
-         )
-         .then(function (res) {
-            // handle success
-            console.log(res);
-            props.dispatch({
-               type: actions.STORE_QUEUED_CARDS,
-               payload: res.data,
+      if (props.queue.cards.length === 0) {
+         axios
+            .get(
+               "https://raw.githubusercontent.com/jysfc/white-bear-mpa/main/src/mock-data/memory-cards.json"
+            )
+            .then(function (res) {
+               // handle success
+               console.log(res);
+               props.dispatch({
+                  type: actions.STORE_QUEUED_CARDS,
+                  payload: res.data,
+               });
+            })
+            .catch(function (error) {
+               // handle error
+               console.log(error);
             });
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
+      }
    }
 
    render() {
