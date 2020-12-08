@@ -1,20 +1,52 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import actions from "../../store/actions";
 
-export default function ReviewDone() {
-   return (
-      <AppTemplate>
-         {/* <!-- Comment above Card --> */}
-         <h4 className="text-center lead text-muted my-2">Out of cards</h4>
+class ReviewDone extends React.Component {
+   goToPrevCard() {
+      this.props.dispatch({ type: actions.DECREMENT_QUEUE_INDEX });
+      this.props.history.push("/review-answer");
+   }
+   getMoreCards() {
+      this.props.dispatch({ type: actions.RESET_QUEUE });
+      this.props.history.push("/review-cue");
+   }
 
-         {/* <!-- buttons --> */}
-         <Link to="/review-answer" className="btn btn-link" id="back-to-answer">
-            Previous card
-         </Link>
-         <Link to="/review-cue" className="btn btn-outline-primary float-right">
-            Get more cards
-         </Link>
-      </AppTemplate>
-   );
+   render() {
+      return (
+         <AppTemplate>
+            {/* <!-- Comment above Card --> */}
+            <h4 className="text-center lead text-muted my-2">Out of cards</h4>
+
+            {/* <!-- buttons --> */}
+            {this.props.queue.index > 0 && (
+               <button
+                  className="btn btn-link"
+                  id="back-to-answer"
+                  onClick={() => {
+                     this.goToPrevCard();
+                  }}
+               >
+                  Previous card
+               </button>
+            )}
+            <button
+               className="btn btn-outline-primary float-right"
+               onClick={() => {
+                  this.getMoreCards();
+               }}
+            >
+               Get more cards
+            </button>
+         </AppTemplate>
+      );
+   }
 }
+
+function mapStateToProps(state) {
+   return {
+      queue: state.queue,
+   };
+}
+export default connect(mapStateToProps)(ReviewDone);
