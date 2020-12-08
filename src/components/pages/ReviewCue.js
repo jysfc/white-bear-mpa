@@ -13,7 +13,7 @@ class ReviewCue extends React.Component {
             .get(
                "https://raw.githubusercontent.com/jysfc/white-bear-mpa/main/src/mock-data/memory-cards.json"
             )
-            .then(function (res) {
+            .then((res) => {
                // handle success
                console.log(res);
                props.dispatch({
@@ -21,7 +21,7 @@ class ReviewCue extends React.Component {
                   payload: res.data,
                });
             })
-            .catch(function (error) {
+            .catch((error) => {
                // handle error
                console.log(error);
             });
