@@ -8,6 +8,7 @@ const initialState = {
       cards: [],
       index: 0,
    },
+   editableCard: {},
 };
 
 const store = createStore(combineReducers, initialState, composeWithDevTools());
