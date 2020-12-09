@@ -26,6 +26,10 @@ class ReviewCue extends React.Component {
                console.log(error);
             });
       }
+
+      if (props.queue.index > props.queue.cards.length) {
+         this.props.history.push("/review-done");
+      }
    }
 
    goToPrevCard() {
