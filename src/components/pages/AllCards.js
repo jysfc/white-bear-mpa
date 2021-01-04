@@ -13,7 +13,7 @@ export default class AllCards extends React.Component {
          allMemoryCards: [],
       };
    }
-//TESTTEST
+
    componentDidMount() {
       axios
          .get(
